@@ -1,0 +1,18 @@
+<div id="register-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" style="display:none;">
+  <div class="modal-content" role="document">
+    <h2 id="modal-title">프로젝트 등록</h2>
+    <form id="register-form">
+      <label for="project-name">프로젝트명</label>
+      <input type="text" id="project-name" name="projectName" required />
+
+      <label for="client-name">고객사</label>
+      <input type="text" id="client-name" name="clientName" required />
+
+      <label for="project-period">프로젝트 기간</label>
+      <input type="text" id="project-period" name="projectPeriod" placeholder="예: 2025.01 - 2025.12" required />
+
+      <button type="submit">등록</button>
+      <button type="button" id="modal-close">취소</button>
+    </form>
+  </div>
+</div>
