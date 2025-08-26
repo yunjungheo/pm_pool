@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>프로젝트 캘린더</title>
+  <link rel="stylesheet" href="style.css"><!-- 기존 사이트 공통 css 있으면 그대로 -->
+  <link rel="stylesheet" href="calendar.css"><!-- ↓ 아래 css 새 파일 -->
+</head>
+<body>
+  <!-- 기존 헤더/메뉴와 동일하게 맞추세요 -->
+  <header class="site-header">
+    <div class="logo" aria-label="ITCEN CTS 로고">
+      <img class="logo_img" src="./ITCEN_main_logo.png" alt="ITCEN CTS 로고" />
+    </div>
+      <h1>PM 통합관리 포탈</h1>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">대시보드</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section id="calendarView" class="calendar-section" aria-label="프로젝트 캘린더">
+      <div class="calendar-toolbar">
+        <div class="left-controls">
+          <span>📅</span>
+          <h1> 프로젝트 캘린더</h1>
+        </div>
+        <div class="calendar-controls">
+          <button id="calPrevBtn" aria-label="이전 달">◀</button>
+          <input id="calMonthInput" type="month" aria-label="기간 검색" />
+          <button id="calNextBtn" aria-label="다음 달">▶</button>
+          <select id="calStateFilter" aria-label="상태 필터">
+            <option value="all">전체</option>
+            <option value="active">투입중</option>
+            <option value="pending">투입대기</option>
+            <option value="done">완료</option>
+          </select>
+        </div>
+        <!-- PM상태 범례 -->
+        <div class="right-controls">
+        <ul class="legend" aria-label="상태 범례">
+          <li class="legend-item">
+            <span class="legend-pill pill-endsoon">종료예정</span>
+            <span class="legend-text">프로젝트 종료 한달 전</span>
+          </li>
+          <li class="legend-item">
+            <span class="legend-pill pill-pending">투입대기</span>
+            <span class="legend-text">프로젝트 종료</span>
+          </li>
+          <li class="legend-item">
+            <span class="legend-pill pill-active">투입중</span>
+            <span class="legend-text">프로젝트 진행 중</span>
+          </li>
+        </ul>
+        </div>
+      </div>
+
+      <!-- ✅ 달력: 헤더와 바디를 분리해 ‘7열 그리드’ 고정 -->
+      <div class="calendar-grid">
+        <div class="calendar-head">
+          <div class="cal-weekday">SUN</div>
+          <div class="cal-weekday">MON</div>
+          <div class="cal-weekday">TUE</div>
+          <div class="cal-weekday">WED</div>
+          <div class="cal-weekday">THU</div>
+          <div class="cal-weekday">FRI</div>
+          <div class="cal-weekday">SAT</div>
+        </div>
+        <div id="calBody" class="calendar-body"><!-- JS가 35~42칸 채웁니다 --></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./calendar.js"></script>
+  </body>
+</html>

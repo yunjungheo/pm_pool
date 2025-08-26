@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PM 통합관리 포탈</title>
-  <!-- ✅ 올바른 스타일 연결 -->
+  <link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -12,10 +13,7 @@
     <div class="logo" aria-label="ITCEN CTS 로고">
       <img class="logo_img" src="./ITCEN_main_logo.png" alt="ITCEN CTS 로고" />
     </div>
-
     <h1>PM 통합관리 포탈</h1>
-
-    <!-- 햄버거 버튼 -->
     <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
       <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
         <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"></path>
@@ -63,22 +61,24 @@
     <div class="search-filter" role="search">
       <label for="search-project">PM풀 탐색</label>
       <input type="search" id="search-project" placeholder="프로젝트 명" aria-label="프로젝트 명 검색" />
-
       <button class="register-btn" type="button" aria-label="프로젝트 등록" id="openRegisterModalBtn">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M19 11H13V5H11V11H5V13H11V19H13V13H19V11Z" />
         </svg>
         PM 등록
       </button>
-
+      <div class="filter-right">
       <select id="status-filter" aria-label="상태 필터">
         <option value="전체" selected>전체</option>
         <option value="진행중">진행중</option>
         <option value="완료">완료</option>
         <option value="지연">지연</option>
       </select>
+      <button id="calendarViewBtn" class="calendar-btn" type="button" onclick="location.href='./calendar.html'">📅 캘린더 보기</button>
+      </div>
+     
     </div>
-
+   
     <table aria-label="프로젝트 리스트">
       <thead>
         <tr>
@@ -186,6 +186,7 @@
       </form>
     </div>
   </div>
+  
 
   <!-- script.js 분리 -->
   <script src="/script.js"></script>
