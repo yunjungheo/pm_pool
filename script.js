@@ -267,7 +267,8 @@ function addRowFromData(data) {
   const status = deriveStatus(Number(progress) || 0);
 
   // "YYYY-MM" 혹은 "YYYY-MM-DD"를 "YYYY.MM"으로 보이게
-  const fmt = (v='') => String(v).replace(/-/g, '.').slice(0, 7);
+  const fmt = (v='') => String(v).replace(/-/g, '.');
+
   const periodText = `${fmt(start)} - ${fmt(end)}`;
 
   const tr = document.createElement('tr');
@@ -360,19 +361,11 @@ function addRowFromData(data) {
       return;
     }
 
-    // (선택) 중복 방지 원하면 주석 해제
-    // if (plannedProjects.includes(projName)) {
-    //   alert('이미 등록된 프로젝트명입니다.');
-    //   return;
-    // }
-
     plannedProjects.push(projName);
     savePlanned(plannedProjects); 
     renderPlannedProjects();
 
     form.reset();
-    // 필요 시 패널 닫기 원하면 주석 해제
-    // closePanel();
   });
   // 저장된 PM 데이터로 테이블 채우기
   pmTableData.forEach(addRowFromData);

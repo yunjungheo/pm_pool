@@ -1,0 +1,126 @@
+/* ===== PM 프로필 카드 (모달/단독 페이지 공통) ===== */
+.pm-profile{
+  background:#fff;
+  border:1px solid #e6e8ef;
+  border-radius:16px;
+  padding:22px 24px;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+  width:920px; max-width:calc(100vw - 40px);
+}
+
+/* 2열 레이아웃 */
+.pm-profile-grid{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+/* --- 왼쪽: 아바타/이름/상태 --- */
+.pm-left{ text-align:center; padding:8px; }
+.pm-avatar{  width: 120px;
+  height: 120px;
+  margin: 0 auto 6px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;  
+  background: #f0f0f0; }
+.pm-avatar img{  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block; }
+.pm-left h3{  
+  margin: 6px 0 2px; 
+  font-size: 18px;   }
+.pm-role{ color:#667; font-size:13px; }
+
+/* 상태 Pill */
+.status-pill{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:9999px;
+  font-size:12px;
+  font-weight:700;
+  color:#fff;
+  margin-top:8px;  
+}
+.status-progress { background:#0047b3; }  /* 진행중 */
+.status-complete { background:#2f4f7f; }  /* 완료 */
+.status-delay    { background:#a94442; }  /* 지연 */
+
+/* --- 오른쪽: 상세 정보 --- */
+.pm-info{ margin:0; }
+.pm-info > div{
+  display:grid;
+  grid-template-columns:82px 1fr;
+  gap:10px;
+  margin:10px 0;
+}
+.pm-info dt{ width:90px; color:#555; font-weight:700; }
+.dot-list{ margin:0; padding-left:18px; list-style:disc; }
+.dot-list li{ margin:4px 0; }
+
+/* 배지(수행성과) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 16px; 
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06), inset 0 -1px 0 rgba(255,255,255,.12);
+  border: 1px solid rgba(0,0,0,.06);
+  white-space: nowrap;
+}
+/* 색상 변형 */
+.badge--green { background: #2f6f64; }  /* 공공기관 */
+.badge--blue  { background: #0f4dbd; }  /* 금융 전문가 */
+/* 필요하면 추가 색상도 쉽게 확장(추후에 추가될 수행성과) */
+/* .badge--gray { background:#4b5563; }
+.badge--purple{ background: #6b4fd8; } */
+
+.badge-row .dot-list {
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: center;
+}
+
+/* 하단 액션 (Teams/이메일/일정보기) – 아이콘+라벨 형태 */
+.pm-actions{
+  margin-top: 45px;
+  display: flex;
+  justify-content: center; 
+  gap: 18px;                
+  flex-wrap: nowrap;
+}
+.action-btn{
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover{ color:#0047b3; }
+.action-btn.disabled{ opacity:.5; pointer-events:none; }
+
+/* 테이블 안 이름(프로필 열기) */
+.name-cell{ color:#0b4dbf; font-weight:600; cursor:pointer; }
+.name-cell:hover{ text-decoration:underline; }
+
+/* 반응형 */
+@media (max-width: 780px){
+  .pm-profile{ padding:18px; }
+  .pm-profile-grid{ grid-template-columns:1fr; }
+  .pm-left{ order:0; } .pm-right{ order:1; }
+}
+@media (max-width: 720px){
+  .pm-actions{ flex-wrap: wrap; gap: 12px 20px; }
+}

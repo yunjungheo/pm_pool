@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pmProfile.css">
+</head>
+<body>
+<div id="pmProfileModal" class="modal" >
+  <div class="modal-content pm-profile">
+    <button id="pmProfileClose" class="close-btn" aria-label="프로필 닫기">&times;</button>
+    <div class="pm-profile-grid">
+      <div class="pm-left">
+        <div class="pm-avatar">
+          <img id="pmProfAvatar" src="./imgs/profile1.png" />
+        </div>
+        <span id="pmProfStatus" class="status-pill">상태</span>
+        <h3 id="pmProfName">박과천</h3>
+        <div id="pmProfRole" class="pm-role">PM</div>
+        <div class="pm-actions">
+          <a id="pmProfTeams" class="action-btn" target="_blank" rel="noopener">💬 Teams</a>
+          <a id="pmProfEmail" class="action-btn">✉️ 이메일</a>
+          <a id="pmProfCal" class="action-btn" href="./calendar.html">📅 일정 보기</a>
+        </div>
+      </div>
+
+      <div class="pm-right">
+        <!-- PM카드 상세내용 나중에는 PM등록에 있는 내용으로 출력될수있게 수정해야함 -->
+        <dl class="pm-info">
+          <div>
+            <dt>소속</dt>
+            <dd id="pmProfOrg"> ITCEN CTS</dd>
+          </div>
+          <div>
+            <dt>기술스택</dt>
+            <dd>
+              <ul id="pmProfSkills" class="dot-list">
+                <li>클라우드(AWS,Azure,GCP)이해</li>
+                <li>네트워크 및 인프라 구조 기본 지식</li>
+                <li>DevOps,CI/CD흐름 이해</li>
+                <li>정보보안(예:ISMS, 개인정보보호법 등)</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>프로젝트 이력</dt>
+            <dd>
+              <ul id="pmProfProjects" class="dot-list">
+                <li>AI 기반 재난종합상황정보 시스템 구축(투입기간 : 10개월)</li>
+                <li>통합관리시스템 개발&#183;시험 인프라증설(투입기간 : 22개월)</li>
+                <li>20XX년 정보시스템 통합유지보수(투입기간 : 18개월)</li>
+                <li>상용인터넷망 무선 인프라 개선사업(투입기간 : 12개월)</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>수행성과</dt>
+            <dd id="pmProfBadges" class="badge-row">
+              <ul class="dot-list">
+                <li class="badge badge--green">공공기관</li>
+                <li class="badge badge--blue">금융 전문가</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./pmProfile.js"></script>
+</body>
+</html>
