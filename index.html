@@ -8,12 +8,12 @@
   href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="./style.css" />
   <!-- <link rel="icon" href="./imgs/favicon.ico" sizes="any"> -->
-
 </head>
 <body>
   <header class="site-header">  
     <div class="logo" aria-label="ITCEN CTS 로고">
-      <a  href="https://itcencts.com/" target="_blank">
+      <!-- <a  href="https://itcencts.com/" target="_blank"> -->
+      <a  href="./index.html">
         <img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고">
       </a>
     </div>
@@ -26,35 +26,43 @@
       <span aria-hidden="true"></span>
      </button>
     </div>
+    <!--  상단메뉴⚒️ -->
+    <!-- <nav class="site-nav">
+      <a href="./index.html">홈</a>
+      <a href="./planned.html">프로젝트</a>
+      <a href="./calendar.html">캘린더</a>
+      <a href="./pmRegister.html">담당자 관리</a>
+    </nav> -->
   </header>
-
   <section class="cards">
     <div class="card" aria-label="진행 예정 프로젝트">
       <div class="card-header">
         <strong>진행 예정 프로젝트</strong>
-        <button class="register-btn register-btn--light" type="button" id="openProjectRegisterBtn">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M19 11H13V5H11V11H5V13H11V19H13V13H19V11Z" />
-          </svg>
-          프로젝트 등록
-        </button>
+        <a href="./planned.html" id="planned-view-all" class="text-link" aria-label="진행 예정 프로젝트 전체 보기">
+          전체 보기
+        </a>
       </div>
       <ul id="planned-projects-list"></ul>  
       <!-- ✅ 5개 초과 시 표시될 '더보기' 토글 버튼 -->
      <button id="planned-more-btn" class="link-btn" type="button" aria-expanded="false" hidden>더보기</button>
     </div>
-    <div class="card-summary" aria-label="프로젝트 요약 현황">
+    <!-- 프로젝트 현황에서 PM현황으로 변경함 -->
+    <div class="card-summary" aria-label="PM 현황">
       <div class="card-sum_list">
         <strong id="stat-total">0</strong>
-        <div>총 프로젝트</div>
+        <div>총 인원</div>
       </div>
       <div>
-        <strong id="stat-progress">0</strong>
-        <div>진행중</div>
+        <strong id="stat-wait">0</strong>
+        <div>투입대기</div>
       </div>
       <div>
-        <strong id="stat-complete">0</strong>
-        <div>완료</div>
+        <strong id="stat-active">0</strong>
+        <div>투입중</div>
+      </div>
+      <div>
+        <strong id="stat-nearend">0</strong>
+        <div>종료예정</div>
       </div>
       <div>
         <strong id="stat-delay">0</strong>
@@ -62,22 +70,20 @@
       </div>
     </div>
   </section>
-
   <section>
     <div class="search-filter" role="search">
       <label for="search-project">PM풀 탐색</label>
       <input type="search" id="search-project" placeholder="프로젝트 명" aria-label="프로젝트 명 검색" />
-      <button class="register-btn" type="button" aria-label="프로젝트 등록" id="openRegisterModalBtn">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M19 11H13V5H11V11H5V13H11V19H13V13H19V11Z" />
-        </svg>
-        PM 등록
-      </button>
+      <button class="register-btn" type="button" id="openRegisterModalBtn" onclick="location.href='./pmRegister.html'">
+        <span class="icon-plus" aria-hidden="true">＋</span> PM 등록
+      </button> 
       <div class="filter-right">
+      <!-- PM현황에 나오는   -->
       <select id="status-filter" aria-label="상태 필터">
         <option value="전체" selected>전체</option>
-        <option value="진행중">진행중</option>
-        <option value="완료">완료</option>
+        <option value="투입대기">투입대기</option>
+        <option value="투입중">투입중</option>
+        <option value="종료예정">종료예정</option>
         <option value="지연">지연</option>
       </select>
       <button id="calendarViewBtn" class="calendar-btn" type="button" onclick="location.href='./calendar.html'">📅 캘린더 보기</button>
@@ -105,110 +111,33 @@
             </td>
             <td>프로젝트명</td>
             <td>고객사</td>
-            <td>2025.08.14 ~ 2025.08.27</td>
+            <td>2025.08.14 ~ 2025.09.27</td>
             <td>
               <div class="progress-bar">
                 <div class="progress-bar-inner" style="width:60%"></div>
               </div>
               <span class="progress-percent">60%</span>
             </td>
-            <td><button class="status-btn status-progress">진행중</button></td>
+            <td><button class="status-btn status-active">투입중</button></td>
           </tr>
       </tbody>
     </table>
   </section>
-
-  <!-- 오른쪽 사이드바 -->
   <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
     <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
-    <nav class="tab-menu" role="tablist">
-      <button class="tab-btn active" data-tab="pmRegister" role="tab" aria-selected="true" aria-controls="pmRegister" id="tab-pmRegister">PM 등록</button>
-      <button class="tab-btn" data-tab="pmStatus" role="tab" aria-selected="false" aria-controls="pmStatus" id="tab-pmStatus">PM 현황</button>
-      <button class="tab-btn" data-tab="projectRegister" role="tab" aria-selected="false" aria-controls="projectRegister" id="tab-projectRegister">프로젝트 등록</button>
+    <!-- ✨ 탭 대신 이동 메뉴 -->
+    <nav class="panel-nav" aria-label="빠른 이동">
+      <a class="panel-link" href="./index.html">홈</a>
+      <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+      <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+      <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+      <a class="panel-link" href="./calendar.html">캘린더 보기</a>
     </nav>
-
-    <!-- PM 등록 -->
-    <div class="tab-content active" id="pmRegister" role="tabpanel" aria-labelledby="tab-pmRegister">
-      <form id="registerFormSidebar">
-        <label for="nameSidebar">성함</label>
-        <input type="text" id="nameSidebar" name="name" required />
-
-        <label for="projectNameSidebar">프로젝트명</label>
-        <input type="text" id="projectNameSidebar" name="projectName" required />
-
-        <label for="clientSidebar">고객사</label>
-        <input type="text" id="clientSidebar" name="client" required />
-
-        <div class="form-two-col">
-          <div>
-            <label for="pmStartDate">투입 시작일</label>
-            <input type="date" id="pmStartDate" name="pmStartDate" required />
-          </div>
-          <div>
-            <label for="pmEndDate">투입 종료일</label>
-            <input type="date" id="pmEndDate" name="pmEndDate" required />
-          </div>
-        </div>
-
-        <!-- 체크박스: 계획된 프로젝트 없음 -->
-        <label for="noPlannedProject" class="inline-checkbox under-period">
-          <input type="checkbox" id="noPlannedProject" />
-          계획된 프로젝트 없음
-        </label>
-
-        <label for="progressSidebar">진행률 (%)</label>
-        <input type="number" id="progressSidebar" name="progress" min="0" max="100" required />
-
-        <label for="statusSidebar">상태</label>
-        <select id="statusSidebar" name="status" required>
-          <option value="진행중">진행중</option>
-          <option value="완료">완료</option>
-          <option value="지연">지연</option>
-        </select>
-
-        <button type="submit" class="btn-submit">등록</button>
-      </form>
-    </div>
-
-    <!-- PM 현황 -->
-    <div class="tab-content" id="pmStatus" role="tabpanel" aria-labelledby="tab-pmStatus">
-      <h3>PM 현황</h3>
-      <p>PM별 현황 리스트를 여기에 추가하세요.</p>
-    </div>
-
-    <!-- 프로젝트 등록 -->
-    <div class="tab-content" id="projectRegister" role="tabpanel" aria-labelledby="tab-projectRegister">
-      <form id="projectRegisterForm">
-        <label for="projName">프로젝트명</label>
-        <input type="text" id="projName" name="projName" required placeholder="예) 스마트시티 구축" />
-
-        <label for="projClient">고객사</label>
-        <input type="text" id="projClient" name="projClient" placeholder="선택 입력" />
-
-        <div class="form-two-col">
-          <div>
-            <label for="projStartDate">시작일</label>
-            <input type="date" id="projStartDate" name="projStartDate" required />
-          </div>
-          <div>
-            <label for="projEndDate">종료일</label>
-            <input type="date" id="projEndDate" name="projEndDate" required />
-          </div>
-        </div>
-
-        <label for="budget">예산(원)</label>
-        <input type="number" id="budget" name="budget" min="0" step="1" placeholder="예) 500000000" />
-
-        <label for="memo">비고</label>
-        <input type="text" id="memo" name="memo" placeholder="선택 입력" />
-
-        <button type="submit" class="btn-submit">등록</button>
-      </form>
-    </div>
   </div>
   
 
-  <!-- script.js 분리 -->
-  <script src="/script.js"></script>
+
+<script src="/common.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>

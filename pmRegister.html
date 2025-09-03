@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PM 등록</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <a href="./index.html"><img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고"></a>
+    </div>
+    <h1 class="site-title">PM 등록</h1>
+    <!-- <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
+     <button class="menu-icon" aria-label="메뉴 열기">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+     </button>
+    </div>
+    <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
+      <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
+      <nav class="panel-nav" aria-label="빠른 이동">
+        <a class="panel-link" href="./index.html">홈</a>
+        <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+        <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+        <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+        <a class="panel-link" href="./calendar.html">캘린더 보기</a>
+      </nav>
+    </div> -->
+  </header>
+
+  <main class="detail-card" style="max-width:980px;margin:0 auto;">
+    <h2 style="margin-bottom:8px;">기본 정보</h2>
+    <form id="pmProfileForm" class="detail-form" novalidate>
+      <!-- 프로필 이미지 선택하기 -->
+      <div style="grid-column:1/-1;">
+        <div style="font-weight:600; margin:12px 0 6px;">프로필 이미지</div>
+        <div class="avatar-grid" id="avatarGrid" role="radiogroup" aria-label="프로필 이미지 선택">
+          <label class="avatar-card">
+          <input type="radio" name="avatar" value="profile_default" />
+          <img src="./imgs/profile1.png" alt="기본 아바타" />
+          </label>
+          <!-- 이미지 업로드 버튼 -->
+          <input type="file" id="avatarUpload" accept="image/*" />
+        </div>
+      </div>
+      <label>성함
+        <input type="text" name="name" required placeholder="예) 박과천" />
+      </label>
+      <label>소속
+        <input type="text" name="affiliation" placeholder="예) ITCEN CTS" />
+      </label>
+      <label>이메일
+        <input type="text" name="email" placeholder="예) user@itcen.com" />
+      </label>
+      <label>Teams 프로필 링크
+        <input type="text" name="teams" placeholder="예) https://teams.microsoft.com/..." />
+      </label>
+      <label style="grid-column:1/-1;">기술스택 (쉼표로 구분)
+        <input type="text" name="skills" placeholder="예) AWS, Azure, GCP, DevOps, ISMS" />
+      </label>
+      <label  for="plannedProject">투입 예정 프로젝트명 (선택)
+        <input type="text" id="plannedProject" name="plannedProject" placeholder="예: 스마트데이터 고도화 2차" />
+      </label>
+        <label  for="plannedProject">투입 예정 고객사명 (선택)
+        <input type="text" id="plannedProject" name="plannedProject" placeholder="예: KK사" />
+      </label>
+      <label for="noPlannedProject" class="inline-checkbox">
+        <input type="checkbox" id="noPlannedProject" />계획된 프로젝트 없음
+      </label>
+      <label for="plannedStart">투입 예정 시작일 (선택)
+        <input type="date" id="plannedStart" name="plannedStart" />
+      </label>
+      <label for="plannedEnd">투입 예정 종료일 (선택)
+        <input type="date" id="plannedEnd" name="plannedEnd" />
+      </label>
+
+      <label style="grid-column:1/-1;">프로젝트 이력
+        <textarea name="history" rows="5" style="padding:10px 12px;border:1px solid #ddd;border-radius:8px;"
+          placeholder="예) AI 기반 재난종합상황정보 시스템 구축(투입기간: 10개월)&#10;통합관리시스템 개발·시험 인프라 증설(22개월)"></textarea>
+      </label>
+
+      <!-- 수행성과: 뱃지 멀티선택 -->
+      <div style="grid-column:1/-1;">
+        <div style="font-weight:600; margin:12px 0 6px;">수행성과(뱃지 선택)</div>
+        <div class="badge-group" id="achvGroup">
+        <button type="button" class="badge badge-public" data-value="공공기관">공공기관</button>
+        <button type="button" class="badge badge-finance" data-value="금융 전문가">금융 전문가</button>
+        <button type="button" class="badge badge-manufacture" data-value="제조/유통">제조/유통</button>
+        <button type="button" class="badge badge-security" data-value="보안/ISMS">보안/ISMS</button>
+        <button type="button" class="badge badge-cloud" data-value="클라우드">클라우드</button>
+        <button type="button" class="badge badge-data" data-value="데이터/AI">데이터/AI</button>
+        </div>
+        <!-- 선택값을 저장할 hidden -->
+        <input type="hidden" name="achievements" id="achievements" />
+      </div>
+
+      <div class="detail-actions actions-group" style="grid-column:1/-1;">
+        <button type="submit" class="btn-submit">등록</button>
+        <button type="button" class="btn-outline btn-outline--cancel" onclick="history.back()">취소</button>
+      </div>
+    </form>
+  </main>
+   <script src="/pmRegister.js"></script>
+  <script src="/common.js"></script>
+</body>
+</html>

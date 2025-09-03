@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>진행 예정 프로젝트</title>
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo" aria-label="ITCEN CTS 로고">
+      <!-- <a href="https://itcencts.com/" target="_blank"> -->
+      <a href="./index.html" >
+        <img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고">
+      </a>
+    </div>
+    <h1 class="site-title">진행 예정 프로젝트</h1>
+    <!-- <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
+     <button class="menu-icon" aria-label="메뉴 열기">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+     </button>
+    </div> -->
+    <!-- <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
+      <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
+      <nav class="panel-nav" aria-label="빠른 이동">
+        <a class="panel-link" href="./index.html">홈</a>
+        <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+        <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+        <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+        <a class="panel-link" href="./calendar.html">캘린더 보기</a>
+      </nav>
+    </div> -->
+  </header>
+
+  <section class="search-filter" role="search">
+    <label for="search-planned">검색</label>
+    <input type="search" id="search-planned" placeholder="프로젝트명/고객사 검색" aria-label="검색" />
+    <button class="register-btn register-btn--light" type="button" id="openProjectRegisterBtn">
+        <span class="icon-plus" aria-hidden="true">＋</span>
+          프로젝트 등록
+    </button>
+    <div class="filter-right">
+      <!-- <button type="button" class="calendar-btn" onclick="location.href='./index.html'">메인으로</button> -->
+    </div>
+  </section>
+<section id="planned-detail" hidden aria-label="프로젝트 상세"></section>
+<!-- 페이지내 프로젝트 등록 폼 (화면에는 보이지 않음) -->
+<template id="planned-create-tpl">
+  <article class="detail-card" aria-labelledby="create-title">
+    <div class="detail-head">
+      <h2 id="create-title">프로젝트 등록</h2>
+    </div>
+    <form id="projectRegisterForm" class="detail-form">
+      <label>프로젝트명
+        <input type="text" name="projName" placeholder="예) 스마트시티 구축" required>
+      </label>
+      <label>고객사
+        <input type="text" name="projClient" placeholder="선택 입력">
+      </label>
+      <div class="form-two-col">
+        <label>시작일
+          <input type="date" name="projStartDate" required>
+        </label>
+        <label>종료일
+          <input type="date" name="projEndDate" required>
+        </label>
+      </div>
+
+      <label>예산(원)
+        <input type="number" name="budget" min="0" step="1" placeholder="예) 500000000">
+      </label>
+
+      <label>비고
+        <input type="text" name="memo" placeholder="선택 입력">
+      </label>
+
+      <div class="detail-actions actions-group">
+        <button type="submit" class="btn-submit">등록</button>
+        <button type="button" class="btn-outline btn-outline--cancel" id="btn-create-cancel">취소</button>
+      </div>
+
+    </form>
+  </article>
+</template>
+
+<section>
+  <table class="table--unified" aria-label="진행 예정 프로젝트 목록">
+    <colgroup>
+      <col style="width:28%"> <!-- 프로젝트명 -->
+      <col style="width:18%"> <!-- 고객사 -->
+      <col style="width:24%"> <!-- 기간 -->
+      <col style="width:12%"> <!-- 예산 -->
+      <col style="width:10%"> <!-- 비고 -->
+      <col style="width:8%">  <!-- 관리 -->
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">프로젝트명</th>
+        <th scope="col">고객사</th>
+        <th scope="col">기간</th>
+        <th scope="col">예산</th>
+        <th scope="col">비고</th>
+        <th scope="col">관리</th>
+      </tr>
+    </thead>
+    <tbody id="planned-tbody"></tbody>
+  </table>
+</section>
+
+<script src="./common.js"></script>
+<script src="./planned.js"></script>
+</body>
+</html>

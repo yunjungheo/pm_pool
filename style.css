@@ -1,4 +1,6 @@
-/* 기본 스타일 */
+/* ==========================================================================
+   0) 기본 타이포그래피 & 리셋
+   ========================================================================== */
 html {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
                Roboto, 'Helvetica Neue', Arial, 'Noto Sans KR', 'Malgun Gothic', sans-serif;
@@ -6,175 +8,225 @@ html {
   line-height: 1.5;
   color: #222;
 }
-/* 모든 요소가 상속받도록 */
 *, *::before, *::after { font-family: inherit; }
 button, input, select, textarea { font-family: inherit; }
 h1, h2, h3, h4, h5, h6 { font-weight: 600; }
+
 body {
   font-weight: 400;
   color: #222;
   line-height: 1.5;
-  max-width: 1280px; 
-  margin: 0 auto;  
-  padding: 0 24px;  
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
+h1 { margin: 0; }
+
+
+/* ==========================================================================
+   1) 레이아웃: 헤더/로고/햄버거
+   ========================================================================== */
 header,
 .site-header {
+  /* 타이틀이랑 햄버거 메뉴있을때 */
   display: grid;
-  grid-template-columns: auto 1fr auto; 
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 16px;
   margin: 10px 20px 30px 20px;
+  /* 타이틀에 메뉴4건 추가시 */
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff; */
 }
+ /* 타이틀이랑 햄버거 메뉴있을때 */
 .site-title {
-  margin: 0;       
+  margin: 0;
   text-align: center;
   font-weight: 700;
   font-size: 22px;
-  justify-self: center; 
+  justify-self: center;
+}
+ /* 타이틀에 메뉴4건추가시 start */
+/* .site-title {
+  margin-left: 12px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
+.site-nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #111827;
+  font-weight: 500;
+}
+
+.site-nav a:hover {
+  color: #2563eb;
+} */
+/* 타이틀에 메뉴4건추가시 end */
 .logo { width: 120px; height: 40px; }
 .logo_img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: contain;
   display: block;
 }
 .header-slot { width: 28px; height: 28px; }
-h1 { margin: 0; }
 
 .menu-icon {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 28px;     /* 필요 시 32~36px로 키우세요 */
-  height: 28px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center; /* 가운데 모아 배치 */
-  gap: 5px;                /* 막대 간격 */
+  background: transparent; border: 0; padding: 0; margin: 0;
+  width: 28px; height: 28px;
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
   cursor: pointer;
 }
 .menu-icon span {
-  display: block;
-  width: 100%;          /* ← 이게 없으면 안 보일 수 있어요 */
-  height: 3px;
-  background: #333;
-  border-radius: 2px;
+  display: block; width: 100%; height: 3px;
+  background: #333; border-radius: 2px;
   transition: transform .2s ease, opacity .2s ease;
 }
-/* 카드 영역 */
+
+
+/* ==========================================================================
+   2) 카드 & 요약
+   ========================================================================== */
 .cards {
-  display: flex;
-  gap: 20px;
+  display: flex; 
+  gap: 20px; 
   margin-bottom: 30px;
+  align-items: stretch;
+}
+.cards .card {        /* 진행 예정(왼쪽) */
+  flex: 0 1 40%;
+}
+.cards .card-summary { /* 요약(오른쪽) */
+  flex: 1 1 60%;
 }
 .card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  background: #f9f9f9;
-  flex: 1;
-  min-width: 0;
+  border: 1px solid #ddd; border-radius: 8px; padding: 16px;
+  background: #f9f9f9; flex: 1; min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .card ul {
-  padding-left: 20px;
-  margin: 8px 0 0 0;
-  list-style-type: disc;
-  color: #444;
-  font-size: 14px;
-  line-height: 1.4;
+  padding-left: 20px; margin: 8px 0 0 0;
+  list-style: disc; color: #444; font-size: 14px; line-height: 1.4;
 }
-
-/* 카드 상단 제목-버튼 한 줄 정렬 */
 .card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 6px;
 }
 
 .card-summary {
-  display: flex;
-  justify-content: space-around;
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr);      /* 4등분 */
+  column-gap: 0;
+  row-gap: 0;
+  padding: 0;     
   text-align: center;
-  font-weight: 700;
-  font-size: 18px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  padding: 15px 0;
-  flex: 1.5;
+  font-weight: 700; font-size: 18px;
+  background: #f9f9f9; border-radius: 8px; border: 1px solid #ddd;
 }
-.card-summary > div { flex: 1; border-right: 1px solid #ddd; }
+.card-summary > div{
+ display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;  
+  padding: 10px 16px;     
+  border-right: 1px solid #e5e7eb;
+  box-sizing: border-box;
+  min-height: 100px;     
+}
 .card-summary > div:last-child { border-right: none; }
 .card-summary .number { font-size: 28px; color: #0047b3; margin-bottom: 4px; }
 
-/* 검색 및 필터 영역 */
+/* ==========================================================================
+   3) 검색/필터 바 & 링크
+   ========================================================================== */
 .search-filter {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 15px; flex-wrap: wrap;
 }
-.search-filter label {
-  font-weight: 600;
-  font-size: 14px;
-  margin-right: 6px;
-}
+.search-filter label { font-weight: 600; font-size: 16px; margin-right: 6px; }
 .search-filter input[type="search"] {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  width: 180px;
+  padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px;
+  font-size: 14px; width: 180px;
 }
-.filter-right{
-  margin-left: auto;         
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.filter-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.text-link { color: #111; cursor: pointer; font-size: 14px;}
+.text-link:hover, .text-link:focus {  opacity: .9; }
+
+
+/* ==========================================================================
+   4) 버튼 (공통/프라이머리/아웃라인/그룹)
+   ========================================================================== */
+/* 공통 베이스: a / button 동일 크기 */
+.btn-submit,
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 30px; padding: 0 12px;
+  font: 600 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Pretendard, Arial, sans-serif;
+  border-radius: 10px; box-sizing: border-box;
+  text-decoration: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
 }
-/* 버튼 */
-button.register-btn {
-  background-color: #0047b3;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+
+/* 기본 등록 버튼(파랑 채움형) */
+button.register-btn,
+.btn-submit {
+  background: #0047b3; border: 1px solid #0047b3; color: #fff; cursor: pointer;
 }
-button.register-btn:hover { background-color: #003399; }
-button.register-btn svg {
-  width: 16px; height: 16px;
-  /* 버튼 글자색을 따라가도록 */
-  fill: currentColor;
+button.register-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  height:35px; padding:0 16px; line-height:1;
+  border-radius:10px;
 }
+button.register-btn:hover, .btn-submit:hover { filter: brightness(0.97); }
+button.register-btn .icon-plus{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;     
+  font-size: 20px;
+}
+
 /* 카드 내부 대비용 라이트 버튼 */
-.register-btn--light {
-  background: #fff;
-  color: #0047b3;
-  border: 1px solid #cbd5ff;
-}
-.register-btn--light:hover { background: #f5f8ff; }
+.register-btn--light { background: #fff; color: #0047b3; border: 1px solid #cbd5ff; }
+.register-btn--light:hover { background: #f5f8ff; color: #0047b3; }
 
-select {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  cursor: pointer;
-}
+/* 외곽선형(수정/삭제 공통) */
+.btn-outline { background: #fff; border: 1.5px solid currentColor; }
+.btn-outline:disabled { opacity: .5; cursor: not-allowed; }
+.btn-outline--edit   { color: #0047b3; }
+.btn-outline--cancel{color: #0047b3; border-color: currentColor; background: #fff;}
+.btn-outline--cancel:hover { background: rgba(0,71,179,.06);}
+.btn-outline--edit:hover   { background: rgba(37,99,235,.06); }
+.btn-outline--edit:focus   { outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,.2); }
+.btn-outline--delete { color: #dc2626; }
+.btn-outline--delete:hover { background: rgba(220,38,38,.06); }
+.btn-outline--delete:focus { outline: none; box-shadow: 0 0 0 3px rgba(220,38,38,.2); }
 
-/* 테이블 스타일 */
+/* 캘린더 버튼 */
+.calendar-btn {
+  background:#fff; border:1px solid #ccc; padding:8px 14px;
+  border-radius:6px; cursor:pointer; font-weight:600; font-size:14px;
+  display:flex; align-items:center; gap:6px; transition: background .2s ease, transform .1s ease;
+}
+.calendar-btn:hover{ background:#003a91; color:#fff; }
+.calendar-btn:active{ transform: translateY(1px); }
+
+/* 버튼 그룹 */
+.actions-group { display: inline-flex; gap: 8px; align-items: center; }
+.detail-actions { display: inline-flex; gap: 10px; align-items: center; justify-content: center; margin-top: 20px;}
+.detail-actions.actions-group { gap: 10px; }
+
+
+/* ==========================================================================
+   5) 테이블 (기본 & 통일 테마)
+   ========================================================================== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -182,7 +234,7 @@ table {
   overflow: hidden;
   box-shadow: 0 0 5px #ddd;
 }
-thead { background-color: #f0f4ff; }
+thead { background-color: #ebeef7;; }
 th, td {
   padding: 12px 15px;
   text-align: left;
@@ -190,249 +242,583 @@ th, td {
   border-bottom: 1px solid #eee;
   vertical-align: middle;
 }
-th {
-  font-weight: 600;
-  user-select: none;
-  cursor: pointer;
-}
+th { font-weight: 600; user-select: none;}
 tbody tr:hover { background-color: #f9faff; }
 input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
 
-/* 진행률 바 */
-.progress-bar {
-  background: #e0e0e0;
-  border-radius: 10px;
-  width: 120px;
-  height: 14px;
+/* 통일 테마 */
+.table--unified {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 0; 
+  table-layout: auto;
+  background: #fff; 
+  border-radius: 12px; 
   overflow: hidden;
-  position: relative;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
 }
-.progress-bar-inner {
-  height: 100%;
-  border-radius: 10px;
-  background-color: #0047b3;
-  transition: width 0.5s ease;
+.table--unified thead th {
+  text-align: left; padding: 10px 12px;
+  background: #f3f7ff; color: #1f2937; font-weight: 700;
+  border-bottom: 2px solid #e5e7eb;
+}
+.table--unified tbody td {
+  padding: 12px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle;
+}
+.table--unified tbody td a {color: #111; cursor: pointer; text-decoration: none
+}
+.table--unified tbody tr:hover { background: #fafafa; }
+.table--unified td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 프로젝트명/비고만 줄바꿈 허용하려면 다음 해제 */
+.table--unified td:nth-child(1),
+.table--unified td:nth-child(5) { white-space: normal; }
+
+/* 관리 컬럼 우측 정렬 */
+.table--unified th:nth-child(6),
+.table--unified td:nth-child(6) { text-align: center; }
+
+/* 링크형 액션(필요 시 사용) */
+.table-action,
+.linklike {
+  color: #111; text-decoration: underline; background: transparent;
+  border: 0; padding: 0; font: inherit; cursor: pointer;
+}
+.table-action:hover, .linklike:hover { opacity: .9; }
+.sep { color:#999; margin: 0 6px; }
+
+
+/* ==========================================================================
+   6) 상세/수정 뷰(카드/폼/그리드)
+   ========================================================================== */
+.detail-card {
+  background: #fff; border: 1px solid #eee; border-radius: 12px;
+  padding: 16px 18px; box-shadow: 0 4px 14px rgba(0,0,0,.04); margin-bottom: 14px;
+}
+.detail-card h2 { margin: 0; font-size: 1.25rem; }
+
+.detail-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 10px; flex-wrap: nowrap; 
+}
+.detail-head h2#proj-title {
+  flex: 1 1 auto;                    /* 남은 공간을 제목이 차지 */
+  min-width: 0;                      /* ellipsis가 동작하도록 */
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  overflow: hidden;                   /* 너무 길면 말줄임 */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.detail-head .detail-actions {
+  flex: 0 0 auto;                    /* 버튼 그룹은 고정 폭 */
+  white-space: nowrap;               /* 버튼 줄바꿈 방지 */
+}
+/* 제목을 링크로 썼다면(밑줄/파란색 제거) */
+.detail-head h2#proj-title a {
+  color: #111 !important;
+  text-decoration: none !important;
+}
+.detail-head h2#proj-title a:hover,
+.detail-head h2#proj-title a:focus {
+  text-decoration: none !important;
+  opacity: .9;
+}
+.detail-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.detail-grid dt { font-weight: 600; color: #333; padding: 10px;}
+.detail-grid dd { margin: 2px 0 0; color: #555; }
+
+/* 수정 폼 */
+.detail-form {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.detail-form > label {
+  display: flex; flex-direction: column; gap: 6px; font-weight: 600;
+}
+.detail-form input[type="text"],
+.detail-form input[type="date"],
+.detail-form input[type="number"] {
+  font-weight: 400; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px;
+  background: #fff; box-sizing: border-box;
+}
+.detail-form .form-two-col { display: contents; } /* 내부 두 label을 1칸씩 배치 */
+
+/* === 6-2) 진행예정 '상세 보기' === */
+
+/* 그리드: 두 칸 배치(고객사/기간, 예산/비고) */
+#planned-detail .detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
 }
 
-/* 상태 버튼 */
-.status-btn {
-  padding: 6px 14px;
-  border-radius: 20px;
+/* 라벨(=dt) 톤/여백: 수정폼 라벨과 동일 */
+#planned-detail .detail-grid dt {
   font-weight: 600;
-  font-size: 13px;
-  color: white;
-  border: none;
-  cursor: default;
-  user-select: none;
-  width: 70px;
-  text-align: center;
+  color: #0047b3;
+  margin: 0 0 6px 0;
 }
-.status-progress { background-color: #0047b3; }
-.status-complete { background-color: #2f4f7f; }
-.status-delay { background-color: #a94442; }
-/* 캘린더 버튼 */
-.calendar-btn{
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
+
+#planned-detail .detail-grid dd {
+  margin: 0;
+  padding: 10px 12px;
+  background: #fff;
+  color: #111;
+  min-height: 40px;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: background .2s ease, transform .1s ease;
+  align-items: center; /* 한 줄일 때 세로 가운데 */
+  box-sizing: border-box;
 }
-.calendar-btn:hover{ background-color:#003a91; color: #fff; }
-.calendar-btn:active{ transform: translateY(1px); }
-.search-filter select#status-filter{
-  height: 36px;
-  border-radius: 6px;
+
+
+
+/* 모바일에서는 한 칸으로 */
+@media (max-width: 720px) {
+  #planned-detail .detail-grid { grid-template-columns: 1fr; }
 }
-/* 오른쪽 사이드바 */
+
+
+/* ==========================================================================
+   7) 진행률/상태 표시
+   ========================================================================== */
+.progress-bar {
+  background: #e0e0e0; border-radius: 10px;
+  width: 120px; height: 14px; overflow: hidden; position: relative;
+}
+.progress-bar-inner {
+  height: 100%; border-radius: 10px; background-color: #0047b3; transition: width .5s ease;
+}
+
+.status-btn {
+  padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 13px;
+  color: #fff; border: 0; cursor: default; user-select: none; width: 80px; text-align: center;
+}
+/* 프로젝트 현황 뱃지(진행중, 완료, 지연) */
+/* .status-progress { background-color: #0047b3; }
+.status-complete { background-color: #2f4f7f; }
+.status-delay    { background-color: #a94442; } */
+.status-wait   { background-color: #3B4A58 } /* 투입대기: 회색 */
+.status-active { background-color: #0047b3; } /* 투입중: 브랜드 블루 */
+.status-nearend{ background-color: #f59e0b; } /* 종료예정: 주황 */
+.status-delay  { background-color: #8D3C3F; } /* 지연: 빨강 */
+
+/* ==========================================================================
+   8) 사이드패널
+   ========================================================================== */
 .side-panel {
   position: fixed;
-  top: 0; right: 0;
-  width: 360px;
+  top: 0;
+  right: 0;
+  width: 240px; 
   height: 100vh;
   padding: 20px;
   background: #fff;
   border-left: 1px solid #e6eaf2;
   box-shadow: -2px 0 16px rgba(0,0,0,.12);
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
   overflow-y: auto;
   z-index: 1500;
 }
 .side-panel.active { transform: translateX(0); }
+.side-panel.open { right: 0; }
+
+/* 닫기 버튼 */
 .close-btn {
   font-size: 24px;
-  background: #edf2ff;
-  border: 1px solid #dbe4ff;
-  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
   padding: 4px 10px;
   cursor: pointer;
   float: right;
   margin-left: 10px;
-  color: #0047b3;
+  color: #000000;
   transition: background .2s ease, transform .1s ease;
 }
-.close-btn:hover { background:#dbe4ff; }
 .close-btn:active { transform: scale(.95); }
 
-.tab-menu { display: flex; gap: 10px; margin-bottom: 20px; }
-.tab-btn {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background: #f3f6ff;
+/* 메뉴 컨테이너 */
+.panel-nav {
+  margin-top: 40px; /* 닫기버튼과 간격 */
+  display: block;
+  padding: 0;
+}
+
+/* 리스트 느낌으로 변경 */
+.panel-link {
+  display: block;
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e7eb; /* 구분선 */
+  transition: background .2s ease;
+}
+.panel-link:hover {
+  background: #f9fafb;
   color: #0047b3;
-  font-weight: 700;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+}
+
+.panel-backdrop {
+  position: fixed; inset: 0;      
+  background: rgba(0, 0, 0, .25); 
+  opacity: 0;
+  pointer-events: none;         
+  transition: opacity .25s ease;
+  z-index: 1400;         
+}
+.panel-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;         
+}
+
+/* .tab-menu { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn {
+  flex: 1; padding: 10px; border: 0; border-radius: 4px;
+  background: #f3f6ff; color: #0047b3; font-weight: 700;
+  transition: background-color .3s ease, color .3s ease; cursor: pointer;
 }
 .tab-btn:hover { background:#e9efff; }
-.tab-btn.active {
-  background:#0047b3; color:#fff;
-  box-shadow: 0 2px 6px rgba(0,71,179,.25);
-}
+.tab-btn.active { background:#0047b3; color:#fff; box-shadow: 0 2px 6px rgba(0,71,179,.25); }
 .tab-content { display: none; font-size: 14px; color: #222; line-height: 1.5; }
-.tab-content.active { display: block; }
+.tab-content.active { display: block; } */
 
-/* PM 등록/프로젝트 등록 폼 */
-#registerFormSidebar label,
+/* 프로젝트 등록 폼 */
 #projectRegisterForm label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
-  color: #0047b3;
-}
-#registerFormSidebar input,
-#registerFormSidebar select,
-#projectRegisterForm input,
-#projectRegisterForm select {
-  width: 100%;
-  padding: 10px 12px;
-  margin-top: 6px;
-  border: 1px solid #ccd6eb;
-  border-radius: 8px;
-  font-size: 14px;
-  box-sizing: border-box;
+  display: block; margin-top: 12px; font-weight: 600; color: #0047b3;
+} 
+#projectRegisterForm input, #projectRegisterForm select {
+  width: 100%; padding: 10px 12px; margin-top: 6px;
+  border: 1px solid #ccd6eb; border-radius: 8px; font-size: 14px; box-sizing: border-box;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
-#registerFormSidebar input:focus,
-#registerFormSidebar select:focus,
-#projectRegisterForm input:focus,
-#projectRegisterForm select:focus {
-  outline: none;
-  border-color: #7aa2ff;
-  box-shadow: 0 0 0 3px rgba(0,71,179,.12);
+#projectRegisterForm input:focus, #projectRegisterForm select:focus {
+  outline: none; border-color: #7aa2ff; box-shadow: 0 0 0 3px rgba(0,71,179,.12);
 }
-
-/* 제출 버튼 공통 */
-#registerFormSidebar .btn-submit,
-#projectRegisterForm .btn-submit {
-  margin-top: 16px;
-  width: 100%;
-  background: #0047b3;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
+#projectRegisterForm  .btn-submit {
+  margin-top: 16px; width: 100%; background: #0047b3; color: #fff; border: 0; border-radius: 8px;
+  padding: 12px; font-weight: 700; font-size: 15px; cursor: pointer;
   transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
   box-shadow: 0 2px 6px rgba(0,71,179,.25);
 }
-#registerFormSidebar .btn-submit:hover,
 #projectRegisterForm .btn-submit:hover { background: #003a91; }
-#registerFormSidebar .btn-submit:active,
-#projectRegisterForm .btn-submit:active { transform: translateY(1px); }
+#projectRegisterForm .btn-submit:active { transform: translateY(1px); } */
 
-/* 체크박스 줄 – 투입기간 바로 밑, 한 줄/좌측 정렬 */
-#registerFormSidebar label.inline-checkbox.under-period {
-  display: flex;           /* block을 덮어써서 한 줄 배치 */
+/* pm등록폼 */
+#pmProfileForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 좌/우 2컬럼 */
+  gap: 16px 20px;    
+}
+#pmProfileForm label.inline-checkbox{
+  grid-column: 1 / -1;     /* 폼의 한 줄 전체 차지 */
+  display: flex;           /* 한 줄 배치 */
+  flex-direction: row;
   align-items: center;
-  gap: 6px;
-  margin: 8px 0 12px;
-  font-weight: 600;
-  color: #0047b3;          /* 라벨 색상 유지 */
-  cursor: pointer;
+  gap: 8px;
+  /* 왼쪽 정렬 강제 */
+  justify-content: flex-start; 
+  justify-self: start; 
+  text-align: left;
+  margin: 0;      
+  width: 100%;
+  padding: 4px 0;      
 }
-#registerFormSidebar label.inline-checkbox.under-period input[type="checkbox"] {
-  width: 16px; height: 16px; cursor: pointer; margin: 0;
+/* 시작/종료일 위치 (원하실 경우 좌/우 고정) */
+#pmProfileForm label[for="plannedStart"] { grid-column: 1 / 2; }
+#pmProfileForm label[for="plannedEnd"]   { grid-column: 2 / 3; }
+
+/* 비활성화 시 스타일(선택) */
+#pmProfileForm input:disabled {
+  background: #f5f6fa;
+  color: #94a3b8;
+  cursor: not-allowed;
 }
-/* 진행예정 더보기 활성 버튼  */
-#planned-more-btn {
-  background-color: #fff;   
-  color: #0047b3;                 
-  border: 1px solid #cbd5ff;     
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
+.inline-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;    /* 줄바꿈 방지 */
+}
+
+/* 비활성화 시 살짝 흐려 보이게(선택) */
+input:disabled {
+  background: #f5f6fa;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* 진행예정리스트 프로젝트 등록폼내 스타일적용 */
+#projectRegisterForm .detail-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#projectRegisterForm .detail-actions.actions-group {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* 진행예정리스트 내 프로젝트 등록 버튼  */
+/* 등록/취소 버튼 크기 통일 */
+#planned-detail #projectRegisterForm .detail-actions .btn-submit,
+#planned-detail #projectRegisterForm .detail-actions .btn-outline {
+  width: auto;
+  height: 36px;
+  padding: 0 16px;
+  line-height: 1;
   font-size: 14px;
-  margin-top: 8px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+#planned-detail #projectRegisterForm .btn-outline--cancel {
+  color: #0047b3;
+  border-color: currentColor;
+  background: #fff;
+}
+#planned-detail #projectRegisterForm .btn-outline--cancel:hover {
+  background: rgba(0,71,179,.06);
 }
 
-#planned-more-btn:hover {
-   background-color: #f0f4ff; 
+/* 혹시 a태그로 취소 버튼을 만든 경우 밑줄 제거 */
+#projectRegisterForm .detail-actions .btn-outline {
+  text-decoration: none;
+  display: inline-flex;         /* 안전장치 */
+  align-items: center;
+  justify-content: center;
 }
 
-#planned-more-btn:active {
-  transform: translateY(1px); /* 클릭 시 살짝 눌린 효과 */
-}
 
-/* 두 칼럼 그리드 유틸 */
+/* ==========================================================================
+   9) 진행예정 보조 UI
+   ========================================================================== */
+#planned-more-btn {
+  background:#fff; color:#0047b3; border:1px solid #cbd5ff;
+  padding:6px 12px; border-radius:8px; cursor:pointer; font-weight:600; font-size:14px;
+  margin-top: 8px; transition: background-color .2s ease, color .2s ease, transform .1s ease;
+  display: inline-flex; align-self: flex-start; width: auto; height: 32px;
+}
+#planned-more-btn:hover { background:#f0f4ff; }
+#planned-more-btn:active { transform: translateY(1px); }
+
+/* 진행예정 미리보기 리스트 */
+#planned-projects-list {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 8px 0 0;
+}
+#planned-projects-list li { min-height: 30px; list-style-type: circle;}
+/* 링크: 블랙, 밑줄 제거, 포인터 */
+#planned-projects-list .planned-link {
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+#planned-projects-list .planned-link:visited { color: #111; }
+#planned-projects-list .planned-link:hover,
+#planned-projects-list .planned-link:focus {
+  text-decoration: none;
+  opacity: .9;
+}
+select {
+  padding: 6px 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; cursor: pointer;
+}
+.search-filter select#status-filter { height: 36px; border-radius: 6px; }
+
+
+/* ==========================================================================
+   10) 유틸 그리드
+   ========================================================================== */
 .form-two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;  /* ← 주석 해제/명시 */
+  display: grid; grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-/* (선택) 모달 스타일 – 필요 시 사용 */
+
+/* ==========================================================================
+   11) (선택) 모달
+   ========================================================================== */
 .modal {
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 1000;
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: flex; justify-content: center; align-items: center; z-index: 1000;
 }
 .modal-content {
-  background: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  width: 320px;
+  background: #fff; padding: 20px 30px; border-radius: 8px; width: 320px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 .modal-content h2 { margin-top: 0; }
 .modal-content label { display: block; margin-top: 12px; font-weight: 600; }
 .modal-content input {
-  width: 100%; padding: 6px 8px; margin-top: 4px;
-  border: 1px solid #ccc; border-radius: 4px;
+  width: 100%; padding: 6px 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px;
 }
 .modal-content button {
-  margin-top: 16px; padding: 8px 14px;
-  border: none; border-radius: 6px; cursor: pointer;
+  margin-top: 16px; padding: 8px 14px; border: 0; border-radius: 6px; cursor: pointer;
 }
-.modal-content button[type="submit"] {
-  background-color: #0047b3; color: white; margin-right: 10px;
-}
-.modal-content button#modal-close { background-color: #ccc; }
+.modal-content button[type="submit"] { background:#0047b3; color:#fff; margin-right: 10px; }
+.modal-content button#modal-close { background:#ccc; }
 
-/* 반응형 */
+
+/* === 6-1) 진행예정 '수정' 폼을 등록 폼과 동일 룩으로 통일 === */
+
+/* 라벨 톤/여백 */
+#editForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #0047b3;            /* 왼쪽 폼 라벨 색상과 동일 */
+}
+
+/* 인풋 기본 스타일(높이/라운드/테두리 톤) */
+#editForm input,
+#editForm select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccd6eb; /* 왼쪽 폼과 동일 톤 */
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+/* 포커스 시 파란 하이라이트(왼쪽 폼과 동일) */
+#editForm input:focus,
+#editForm select:focus {
+  outline: none;
+  border-color: #7aa2ff;
+  box-shadow: 0 0 0 3px rgba(0,71,179,.12);
+}
+
+/* 두 칸짜리 행 배치(시작일/종료일) — 왼쪽과 동일 */
+#editForm .form-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+}
+
+/* 버튼 묶음 간격 및 정렬 */
+#editForm .detail-actions.actions-group {
+  margin-top: 42px;
+  gap: 10px;
+}
+
+/* 카드 패딩 톤(필요 시) — 왼쪽 detail-card와 동일하게 */
+#planned-detail .detail-card {
+  padding: 16px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.04);
+  border: 1px solid #eee;
+  background: #fff;
+  width: 80%;
+  margin: 30px auto;
+}
+/* ==========================================================================
+   12) PM등록 페이지
+   ========================================================================== */
+/* 뱃지 멀티 선택 */
+/* 공통 */
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.badge {
+  border: 1.5px solid transparent;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
+}
+.badge:hover { opacity: 0.9; }
+.badge:active { transform: translateY(1px); }
+
+/* 아바타 선택 카드 */
+.avatar-grid{
+  display:flex; gap:16px; flex-wrap:wrap;
+}
+.avatar-card{
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:10px 14px; border:1.5px solid #e5e7eb; border-radius:12px;
+  cursor:pointer; user-select:none; transition:box-shadow .15s, border-color .15s, transform .05s;
+  background:#fff;
+}
+.avatar-card:hover{ box-shadow:0 2px 10px rgba(0,0,0,.08); }
+.avatar-card:active{ transform:translateY(1px); }
+.avatar-card input[type="radio"]{ display:none; }
+.avatar-card img{
+  width:96px; height:96px; border-radius:50%; object-fit:cover; display:block;
+  background:#f8fafc;
+}
+.avatar-card span{ font-weight:700; color:#111; font-size:13px; }
+.profile-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+#avatarUpload {
+  font-size: 14px;
+}
+
+/* 선택 상태 */
+.avatar-card input[type="radio"]:checked + img,
+.avatar-card input[type="radio"]:checked ~ img{
+  outline:3px solid #0047b3; outline-offset:2px;
+}
+.avatar-card input[type="radio"]:checked ~ span{ color:#0047b3; }
+
+
+/* === 수행성과 뱃지별 컬러 === */
+.badge-public { border-color: #22c55e; color: #22c55e;}
+.badge-public.selected {  background: #22c55e; color: #fff; border-color: #22c55e;}
+
+.badge-finance {border-color: #2563eb; color: #2563eb;}
+.badge-finance.selected {background: #2563eb; color: #fff; border-color: #2563eb;}
+
+.badge-manufacture {border-color: #f59e0b; color: #f59e0b;}
+.badge-manufacture.selected {background: #f59e0b; color: #fff; border-color: #f59e0b;}
+
+.badge-security {border-color: #dc2626; color: #dc2626;}
+.badge-security.selected {background: #dc2626; color: #fff; border-color: #dc2626;}
+
+.badge-cloud {border-color: #0ea5e9; color: #0ea5e9;}
+.badge-cloud.selected {background: #0ea5e9; color: #fff; border-color: #0ea5e9;}
+
+.badge-data {border-color: #9333ea; color: #9333ea;}
+.badge-data.selected {background: #9333ea; color: #fff; border-color: #9333ea;}
+
+/* ==========================================================================
+   13) 반응형
+   ========================================================================== */
 @media (max-width: 720px) {
   .cards { flex-direction: column; }
+  .cards .card,.cards .card-summary {flex: 1 1 auto; }
   .card-summary { flex-direction: column; gap: 10px; }
-  .card-summary > div {
-    border-right: none; border-bottom: 1px solid #ddd; padding: 10px 0;
-  }
-  .card-summary > div:last-child { border-bottom: none; }
+  .card-summary > div { border-right: 0; border-bottom: 1px solid #ddd; padding: 10px 0; }
+  .card-summary > div:last-child { border-bottom: 0; }
   .search-filter { flex-direction: column; align-items: flex-start; }
   button.register-btn { width: 100%; justify-content: center; }
 }
