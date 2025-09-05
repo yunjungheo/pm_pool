@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     host.innerHTML = `
       <article class="detail-card" aria-labelledby="not-found">
         <header class="detail-head">
-          <h2 id="not-found">PM 정보를 찾을 수 없습니다</h2>
+          <h2 id="not-found">예시를 위한 리스트로 PM등록후 확인해주세요.</h2>
           <nav class="detail-actions actions-group">
             <a class="btn-outline btn-outline--edit" href="./index.html" role="button">목록으로</a>
           </nav>
