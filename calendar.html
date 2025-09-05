@@ -3,24 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>프로젝트 캘린더</title>
-    <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="calendar.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/calendar.css">
 
 </head>
 <body>
-  <!-- 기존 헤더/메뉴와 동일하게 맞추세요 -->
     <header class="site-header">
       <!-- <a class="logo" href="https://itcencts.com/" target="_blank" rel="noopener noreferrer" aria-label="ITCEN CTS 홈페이지 새 탭으로 열기"> -->
       <a class="logo" href="./index.html">
       <img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고">
     </a>
     <h1 class="site-title">PM 통합관리 포탈</h1>
-    <nav class="site-nav">
-    <!-- <a href="index.html">대시보드</a> -->
+    <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
+     <button class="menu-icon" aria-label="메뉴 열기">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+     </button>
+    </div>
+    <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
+    <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
+    <!-- ✨ 탭 대신 이동 메뉴 -->
+    <nav class="panel-nav" aria-label="빠른 이동">
+      <a class="panel-link" href="./index.html">홈</a>
+      <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+      <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+      <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+      <a class="panel-link" href="./calendar.html">캘린더 보기</a>
     </nav>
-    <!-- <button class="menu-icon" aria-label="메뉴 열기">
-      <span></span><span></span><span></span>
-    </button> -->
+  </div>
   </header>
   <main class="page">
     <section id="calendarView" class="calendar-section" aria-label="프로젝트 캘린더">
@@ -44,16 +55,20 @@
         <div class="right-controls">
         <ul class="legend" aria-label="상태 범례">
           <li class="legend-item">
-            <span class="legend-pill pill-endsoon">종료예정</span>
-            <span class="legend-text">프로젝트 종료 한달 전</span>
+            <span class="legend-pill status-wait">투입대기</span>
+            <span class="legend-text">프로젝트 미배정</span>
           </li>
           <li class="legend-item">
-            <span class="legend-pill pill-pending">투입대기</span>
-            <span class="legend-text">프로젝트 종료</span>
+            <span class="legend-pill status-active">투입중</span>
+            <span class="legend-text">프로젝트 진행중</span>
           </li>
           <li class="legend-item">
-            <span class="legend-pill pill-active">투입중</span>
-            <span class="legend-text">프로젝트 진행 중</span>
+            <span class="legend-pill status-nearend">종료예정</span>
+            <span class="legend-text">프로젝트 종료 일주일 전</span>
+          </li>
+           <li class="legend-item">
+            <span class="legend-pill status-delay">지연</span>
+            <span class="legend-text">프로젝트 지연</span>
           </li>
         </ul>
         </div>
@@ -74,7 +89,7 @@
       </div>
     </section>
   </main>
-
-  <script src="./calendar.js"></script>
+   <script src="./js/common.js"></script>
+  <script src="./js/calendar.js"></script>
   </body>
 </html>

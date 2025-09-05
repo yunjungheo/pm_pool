@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PM 등록</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
   <header class="site-header">
@@ -12,7 +12,7 @@
       <a href="./index.html"><img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고"></a>
     </div>
     <h1 class="site-title">PM 등록</h1>
-    <!-- <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
+    <div class="menu-icon" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
      <button class="menu-icon" aria-label="메뉴 열기">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -20,15 +20,16 @@
      </button>
     </div>
     <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
-      <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
-      <nav class="panel-nav" aria-label="빠른 이동">
-        <a class="panel-link" href="./index.html">홈</a>
-        <a class="panel-link" href="./pmRegister.html">PM 등록</a>
-        <a class="panel-link" href="./planned.html">프로젝트 등록</a>
-        <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
-        <a class="panel-link" href="./calendar.html">캘린더 보기</a>
-      </nav>
-    </div> -->
+    <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
+    <!-- ✨ 탭 대신 이동 메뉴 -->
+    <nav class="panel-nav" aria-label="빠른 이동">
+      <a class="panel-link" href="./index.html">홈</a>
+      <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+      <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+      <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+      <a class="panel-link" href="./calendar.html">캘린더 보기</a>
+    </nav>
+  </div>
   </header>
 
   <main class="detail-card" style="max-width:980px;margin:0 auto;">
@@ -103,7 +104,7 @@
       </div>
     </form>
   </main>
-   <script src="/pmRegister.js"></script>
-  <script src="/common.js"></script>
+   <script src="./js/common.js"></script>
+   <script src="./js/pmRegister.js"></script>
 </body>
 </html>

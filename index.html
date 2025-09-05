@@ -6,13 +6,11 @@
   <title>PM 통합관리 포탈</title>
   <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="./style.css" />
-  <!-- <link rel="icon" href="./imgs/favicon.ico" sizes="any"> -->
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
   <header class="site-header">  
     <div class="logo" aria-label="ITCEN CTS 로고">
-      <!-- <a  href="https://itcencts.com/" target="_blank"> -->
       <a  href="./index.html">
         <img class="logo_img" src="./imgs/ITCEN_main_logo.png" alt="ITCEN CTS 로고">
       </a>
@@ -26,6 +24,18 @@
       <span aria-hidden="true"></span>
      </button>
     </div>
+    <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
+    <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
+    <!-- ✨ 탭 대신 이동 메뉴 -->
+    <nav class="panel-nav" aria-label="빠른 이동">
+      <a class="panel-link" href="./index.html">홈</a>
+      <a class="panel-link" href="./pmRegister.html">PM 등록</a>
+      <a class="panel-link" href="./planned.html">프로젝트 등록</a>
+      <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
+      <a class="panel-link" href="./calendar.html">캘린더 보기</a>
+    </nav>
+  </div>
+
     <!--  상단메뉴⚒️ -->
     <!-- <nav class="site-nav">
       <a href="./index.html">홈</a>
@@ -107,7 +117,7 @@
           <tr>
             <td><input type="checkbox" /></td>
             <td>
-              <a class="pm-link" href="pmprofile.html?id=pm001">예시)박과천</a>
+              <a class="pm-link" href="ex_pmProfile.html">예시)박과천</a>
             </td>
             <td>프로젝트명</td>
             <td>고객사</td>
@@ -123,21 +133,9 @@
       </tbody>
     </table>
   </section>
-  <div id="sidePanel" class="side-panel" aria-hidden="true" role="complementary" aria-label="사이드 메뉴">
-    <button id="closePanelBtn" class="close-btn" aria-label="사이드바 닫기">&times;</button>
-    <!-- ✨ 탭 대신 이동 메뉴 -->
-    <nav class="panel-nav" aria-label="빠른 이동">
-      <a class="panel-link" href="./index.html">홈</a>
-      <a class="panel-link" href="./pmRegister.html">PM 등록</a>
-      <a class="panel-link" href="./planned.html">프로젝트 등록</a>
-      <a class="panel-link" href="./planned.html">진행예정 프로젝트 보기</a>
-      <a class="panel-link" href="./calendar.html">캘린더 보기</a>
-    </nav>
-  </div>
   
-
-
-<script src="/common.js"></script>
-<script src="/script.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/script.js"></script>
+<!-- <script src="./js/pmList.js"></script> -->
 </body>
 </html>

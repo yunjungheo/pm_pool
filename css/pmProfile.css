@@ -1,0 +1,187 @@
+/* === 상세 프로필 레이아웃*/ 
+
+#pm-detail.pm-profile{
+  background:#fff;border:1px solid #e6e8ef;border-radius:16px;
+  padding:22px 24px;box-shadow:0 6px 20px rgba(0,0,0,.06);
+  width:980px;max-width:calc(100vw - 40px);margin:24px auto;
+}
+
+#pm-detail .pm-profile-grid{
+  display:grid;
+  grid-template-columns: 132px 1fr; /* ← 왼쪽은 아바타만, 오른쪽은 전부 */
+  gap:18px 24px; align-items:start;
+}
+
+/* 왼쪽: 아바타만 중앙 정렬 */
+#pm-detail { --avatar:108px; }
+#pm-detail .pm-left{
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+#pm-detail .pm-avatar{
+  width:var(--avatar);height:var(--avatar);
+  border-radius:50%;object-fit:cover;border:1px solid #eee;display:block;
+}
+#pm-detail .pm-avatar-wrap{ position:relative; }
+#pm-detail .pm-avatar-wrap .status-btn{
+  position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;
+}
+
+/* 오른쪽: 상단 헤더(이름+퀵링크) + 정보/뱃지/이력 + 하단 진행/액션 */
+#pm-detail .pm-right{ min-width:0; }
+#pm-detail .pm-header{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+}
+#pm-detail .pm-name{
+  font-size:20px; font-weight:600; line-height:1.2; margin-right:auto;
+}
+/* 라벨/값 정렬 */
+#pm-detail .pm-info{ margin-top:4px; }
+#pm-detail .pm-info > div{
+  display:grid; grid-template-columns:max-content 1fr;
+  gap:8px 14px; margin:8px 0; align-items:start;
+}
+#pm-detail .pm-info dt{ color:#555; font-weight:700; white-space:nowrap; }
+#pm-detail .pm-info dd{ margin:0; overflow-wrap:anywhere; }
+
+/* 목록 점 */
+#pm-detail .dot-list{ margin:0; padding-left:18px; list-style:disc; }
+#pm-detail .dot-list li{ margin:4px 0; }
+
+/* 뱃지 */
+#pm-detail .badge{
+  display:inline-flex; align-items:center;
+  padding:6px 12px; border-radius:16px;
+  font-size:13px; font-weight:700; line-height:1; color:#fff;
+  box-shadow:0 1px 0 rgba(0,0,0,.06), inset 0 -1px 0 rgba(255,255,255,.12);
+  border:1px solid rgba(0,0,0,.06); white-space:nowrap;
+}
+#pm-detail .badge--green{ background:#2f6f64; }
+#pm-detail .badge--blue{  background:#0f4dbd; }
+#pm-detail .badge-row .dot-list{
+  display:flex; gap:8px; padding:0; margin:0; list-style:none; flex-wrap:wrap;
+}
+
+/* 진행률/하단 버튼 영역 */
+#pm-detail .pm-foot{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:12px;
+}
+#pm-detail .progress-wrap{ flex:1 1 280px; display:flex; align-items:center; gap:10px; }
+#pm-detail .progress-bar{
+  position:relative; height:8px; border-radius:999px; background:#e7ecf6; flex:1;
+}
+#pm-detail .progress-bar > i{
+  position:absolute; left:0; top:0; bottom:0; width:0%;
+  background:#0b4dbf; border-radius:999px;
+}
+#pm-detail .progress-label{ font-weight:700; min-width:42px; text-align:right; }
+
+#pm-detail .pm-actions{
+  margin-left:auto; display:flex; gap:10px; flex-wrap:wrap;
+}
+#pm-detail .btn-outline{
+  appearance:none; border:2px solid #5b21b6; color:#5b21b6; background:#fff;
+  padding:8px 12px; border-radius:999px; font-weight:800; cursor:pointer;
+}
+#pm-detail .btn-outline:hover{ background:#f8f5ff; }
+/* ===== 컨테이너 ===== */
+#pm-detail .detail-card{
+  background:#fff;border:1px solid #e6e8ef;border-radius:16px;
+  padding:22px 24px;box-shadow:0 6px 20px rgba(0,0,0,.06);
+  max-width:980px;margin:24px auto;
+}
+
+/* ===== 그리드: 왼쪽(아바타 132px) / 오른쪽(나머지) ===== */
+#pm-detail .pm-detail-grid{
+  display:flex;
+  gap:18px 24px;
+  align-items:start;
+}
+
+/* 아바타만 왼쪽 컬럼 */
+#pm-detail { --avatar:108px; }
+#pm-detail .pm-avatar{
+  width:var(--avatar);height:var(--avatar);
+  border-radius:50%;object-fit:cover;border:1px solid #eee;display:block;
+}
+#pm-detail .pm-avatar-wrap{
+  grid-column:1; /* ← 왼쪽 컬럼 */
+  justify-self:center;
+  position:relative;
+}
+#pm-detail .status-btn{
+  position:absolute; left:50%; transform:translateX(-50%); bottom:-10px;
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px;
+  color:#fff; border:0;
+}
+/* 이름과 퀵링크를 오른쪽 맨 위로 이동 */
+#pm-detail .pm-name{
+  grid-column:2; grid-row:1; /* 오른쪽 상단 */
+  font-size:20px; font-weight:800; line-height:1.2;
+  align-self:center; justify-self:start;
+  margin:0; /* 안전 */
+}
+#pm-detail .pm-quick{
+  grid-column:2; 
+  grid-row:1; /* 같은 행의 오른쪽 끝 */
+  justify-self:end; 
+  align-self:center;
+  display:flex; 
+  gap:12px; 
+  flex-wrap:wrap;
+  font-size: 25px;
+}
+#pm-detail .pm-quick .quick-btn{
+  color:#0b4dbf; font-weight:700; text-decoration:none; 
+}
+
+/* 오른쪽 상세 본문은 이름/퀵링크 아래로 */
+#pm-detail .pm-right{
+  grid-column:2; grid-row:2; min-width:0;
+}
+
+/* key-value 줄맞춤 */
+#pm-detail .pm-kv{ margin:2px 0 10px; }
+#pm-detail .kv{
+  display:grid; grid-template-columns:max-content 1fr; gap:6px 12px; margin:6px 0;
+}
+#pm-detail .kv-key{ color:#555; font-weight:700; white-space:nowrap; }
+#pm-detail .kv-val{ overflow-wrap:anywhere; }
+
+/* 블록(제목/본문) */
+#pm-detail .pm-block{ margin:20px; }
+#pm-detail .block-title{ font-weight:800; margin:6px 0 4px; }
+#pm-detail .block-body{ margin:0; }
+#pm-detail .bullet-list{ margin:0; padding-left:18px; list-style:disc; }
+#pm-detail .bullet-list li{ margin:4px 0; }
+
+/* 배지 */
+#pm-detail .badge{
+  display:inline-flex; align-items:center; padding:6px 12px; border-radius:16px;
+  font-size:13px; font-weight:700; line-height:1; color:#fff; margin-right:6px;
+}
+
+/* 진행률 */
+#pm-detail .pm-progress .progress-bar{
+  position:relative; height:8px; border-radius:999px; background:#e7ecf6;
+  width:220px; display:inline-block; vertical-align:middle; margin-right:8px;
+}
+#pm-detail .pm-progress .progress-bar-inner{
+  position:absolute; left:0; top:0; bottom:0; background:#0b4dbf; border-radius:999px;
+}
+#pm-detail .pm-progress .progress-percent{ font-weight:700; }
+
+/* 하단 액션 */
+#pm-detail .pm-actions{
+  display:flex; justify-content:flex-end; margin-top:14px;
+}
+#pm-detail .btn-outline{
+  appearance:none; border:2px solid #5b21b6; color:#5b21b6; background:#fff;
+  padding:8px 12px; border-radius:999px; font-weight:800;
+}
+/* #pm-detail .btn-outline:hover{ background:#f8f5ff; } */
+
+/* 반응형 */
+@media (max-width:780px){
+  #pm-detail .pm-detail-grid{ grid-template-columns:96px 1fr; gap:14px 16px; }
+  #pm-detail .pm-name{ font-size:18px; }
+}
